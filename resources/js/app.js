@@ -24,6 +24,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('read', require('./components/Read.vue').default);
 Vue.component('edit', require('./components/Edit.vue').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -32,9 +33,15 @@ Vue.component('edit', require('./components/Edit.vue').default);
 
 const app = new Vue({
     el: '#app',
-    data:{
-        dummyarray:[]
-
+    data: {
+        activetab: 'main',
+        dummyarray: [],
+        categoryschema: [{ "nazwa": "name", "typ": "string" }],
+        mojedaneschema: [{ "nazwa": "costam", "typ": "string" }, { "nazwa": "costam1", "typ": "string" }, { "nazwa": "category_id", "typ": "category",dane:[]}],
+    },
+    mounted(){
+        let self = this;
+        axios.get('/category').then((res)=>self.mojedaneschema.find((el)=>el.nazwa == 'category_id' ).dane = res.data);
     }
 
 });
