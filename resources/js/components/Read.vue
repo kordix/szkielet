@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       dane: [],
-      hidden: ["created_at", "updated_at"]
+      hidden: ["created_at", "updated_at",'category_id']
     };
   },
   methods: {

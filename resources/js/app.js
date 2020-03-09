@@ -36,12 +36,12 @@ const app = new Vue({
     data: {
         activetab: 'main',
         dummyarray: [],
-        categoryschema: [{ "nazwa": "name", "typ": "string" }],
-        mojedaneschema: [{ "nazwa": "costam", "typ": "string" }, { "nazwa": "costam1", "typ": "string" }, { "nazwa": "category_id", "typ": "category",dane:[]}],
+        //clientschema: [{"nazwa":"name","typ":"string"},{"nazwa":"lastname","typ":"string"},{"nazwa":"category_id","typ":"category",dane:[]}],
+        //categoryschema:[{"nazwa":"name","typ":"string"}]  
     },
     mounted(){
         let self = this;
-        axios.get('/category').then((res)=>self.mojedaneschema.find((el)=>el.nazwa == 'category_id' ).dane = res.data);
+        axios.get('/category').then((res)=>self.clientschema.find((el)=>el.nazwa == 'category_id' ).dane = res.data);
     }
 
 });

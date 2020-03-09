@@ -60,7 +60,13 @@
         <p><b>Schemat</b></p>
         <p><i>Skopiuj dane z devtools np. do app.js pod własną nazwą zmiennej, zapodaj schemat i nazwę modelu do komponentów
                 Read i Edit</i></p>
-        <p></p>
+        <p><b> Typowa konfiguracja dla kategorii:</b></p>
+        <p>w app.js</p>
+        <textarea style="display:block;width:1000px;height:40px;">axios.get('/category').then((res)=>self.clientschema.find((el)=>el.nazwa == 'category_id' ).dane = res.data);</textarea>
+        <p>index w {{modelnazwa}}Controller.php </p>
+        <textarea style="width: 1200px;height:60px">return $users = DB::table('clients')->join('categories', 'clients.category_id', '=', 'categories.id')->select('clients.*', 'categories.name as categoriesname')->get();
+        </textarea>
+
 
         <button @click="save">zapisz</button>
 

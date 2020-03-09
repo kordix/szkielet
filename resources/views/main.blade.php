@@ -14,7 +14,7 @@
     <edit :key="'2'":schemat="dummyarray" :modelname="''"></edit>
  </div>
  <div v-if="activetab=='kategorie'">
-    <read :key="'3'":modelname="'Category'"></read>
+    <read :key="'3'":modelname="''"></read>
     <edit :key="'4'":schemat="dummyarray" :modelname="''"></edit>
  </div>
     

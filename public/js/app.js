@@ -2048,7 +2048,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   data: function data() {
     return {
       dane: [],
-      hidden: ["created_at", "updated_at"]
+      hidden: ["created_at", "updated_at", 'category_id']
     };
   },
   methods: {
@@ -49943,27 +49943,14 @@ var app = new Vue({
   el: '#app',
   data: {
     activetab: 'main',
-    dummyarray: [],
-    categoryschema: [{
-      "nazwa": "name",
-      "typ": "string"
-    }],
-    mojedaneschema: [{
-      "nazwa": "costam",
-      "typ": "string"
-    }, {
-      "nazwa": "costam1",
-      "typ": "string"
-    }, {
-      "nazwa": "category_id",
-      "typ": "category",
-      dane: []
-    }]
+    dummyarray: [] //clientschema: [{"nazwa":"name","typ":"string"},{"nazwa":"lastname","typ":"string"},{"nazwa":"category_id","typ":"category",dane:[]}],
+    //categoryschema:[{"nazwa":"name","typ":"string"}]  
+
   },
   mounted: function mounted() {
     var self = this;
     axios.get('/category').then(function (res) {
-      return self.mojedaneschema.find(function (el) {
+      return self.clientschema.find(function (el) {
         return el.nazwa == 'category_id';
       }).dane = res.data;
     });
@@ -50259,8 +50246,8 @@ var EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\PROJEKTY\szkielet\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\PROJEKTY\szkielet\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! c:\PROJEKTY\szkielet\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! c:\PROJEKTY\szkielet\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

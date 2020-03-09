@@ -17,9 +17,4 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-Route::resource('category', 'CategoryController');
-Route::resource('mojedane', 'MojedaneController');
-
-
 Route::get('/home', 'HomeController@index')->name('home');
