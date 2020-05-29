@@ -13,8 +13,10 @@
 
 Route::get('/', function () {
     return view('main');
-});
+})->middleware('auth');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('haslo','HasloController');

@@ -23,6 +23,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 Vue.component('read', require('./components/Read.vue').default);
 Vue.component('edit', require('./components/Edit.vue').default);
+Vue.component('shower', require('./components/Shower.vue').default);
+
 
 
 /**
@@ -36,12 +38,13 @@ const app = new Vue({
     data: {
         activetab: 'main',
         dummyarray: [],
+        hasloschema:[{"nazwa":"name","typ":"string"},{"nazwa":"login","typ":"string"},{"nazwa":"password","typ":"string"}]
         //clientschema: [{"nazwa":"name","typ":"string"},{"nazwa":"lastname","typ":"string"},{"nazwa":"category_id","typ":"category",dane:[]}],
         //categoryschema:[{"nazwa":"name","typ":"string"}]  
     },
     mounted(){
         let self = this;
-        axios.get('/category').then((res)=>self.clientschema.find((el)=>el.nazwa == 'category_id' ).dane = res.data);
+        // axios.get('/category').then((res)=>self.clientschema.find((el)=>el.nazwa == 'category_id' ).dane = res.data);
     }
 
 });

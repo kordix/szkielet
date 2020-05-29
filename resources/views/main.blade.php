@@ -10,12 +10,12 @@
 
 </select>
  <div v-if="activetab=='main'">
-    <read :key="'1'" :modelname="''"></read>
-    <edit :key="'2'":schemat="dummyarray" :modelname="''"></edit>
+    <read :key="'1'" :modelname="'Haslo'"></read>
+    <edit :key="'2'":schemat="hasloschema" :modelname="'Haslo'"></edit>
  </div>
  <div v-if="activetab=='kategorie'">
-    <read :key="'3'":modelname="''"></read>
-    <edit :key="'4'":schemat="dummyarray" :modelname="''"></edit>
+    <read :key="'3'":modelname="'Haslo'"></read>
+    <edit :key="'4'":schemat="hasloschema" :modelname="'Haslo'"></edit>
  </div>
     
 </div>
