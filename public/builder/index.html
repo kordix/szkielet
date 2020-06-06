@@ -115,7 +115,7 @@
                     this.modelcommand = 'php artisan make:model ' + this.modelnazwa + ' -mr';
 
                     for (let i = 0; i < this.dane.length; i++) {
-                        this.migracja += '$table->' + this.dane[i].typ + '(\'' + this.dane[i].nazwa + '\');';
+                        this.migracja += '$table->' + this.dane[i].typ + '(\'' + this.dane[i].nazwa + '\')->nullable();';
                     }
 
                 },
