@@ -19,11 +19,9 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 Vue.component('read', require('./components/Read.vue').default);
 Vue.component('edit', require('./components/Edit.vue').default);
-Vue.component('shower', require('./components/Shower.vue').default);
 
 
 
@@ -38,7 +36,6 @@ const app = new Vue({
     data: {
         activetab: 'main',
         dummyarray: [],
-        hasloschema:[{"nazwa":"name","typ":"string"},{"nazwa":"login","typ":"string"},{"nazwa":"password","typ":"string"}]
         //clientschema: [{"nazwa":"name","typ":"string"},{"nazwa":"lastname","typ":"string"},{"nazwa":"category_id","typ":"category",dane:[]}],
         //categoryschema:[{"nazwa":"name","typ":"string"}]  
     },
