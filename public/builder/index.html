@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Builder</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -59,7 +59,7 @@
             <textarea style="display:block;width:600px;height:40px;">{{show}}</textarea>
             <p>update</p>
             <textarea style="display:block;width:600px;height:40px;">{{update}}</textarea>
-            <p><b>HTML</b></p>
+            <p><b>Edit.vue</b></p>
             <textarea name="" id="" cols="30" rows="10" style="width:800px">
                 {{myhtml}}
         </textarea>
@@ -93,6 +93,7 @@
                 store: '',
                 show: '',
                 update: '',
+                myhtml:'',
                 dane: []
             },
             created() {
@@ -112,6 +113,7 @@
 
                 },
                 generateMigracja() {
+                    this.migracja = ''; 
                     this.modelcommand = 'php artisan make:model ' + this.modelnazwa + ' -mr';
 
                     for (let i = 0; i < this.dane.length; i++) {
