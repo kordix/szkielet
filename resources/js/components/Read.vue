@@ -7,27 +7,13 @@
       <table class="table table-bordered table-dark">
         <thead>
           <tr>
-            <td>Portal</td>
-            <td>login</td>
-            <td>hasło</td>
-            <td>created_at</td>
-
-
-            <!-- <td v-for="elem in heads">{{elem}}</td> -->
-            <!-- <td>usuń</td> -->
+            <td v-for="elem in heads">{{elem}}</td>
+            <td>usuń</td>
           </tr>
         </thead>
         <tbody>
           <tr v-for="elem in dane">
-            <td>{{elem.name}}</td>
-            <td>{{elem.login}}</td>
-            <!-- <input :value="elem.password" type="password"> -->
-            <shower :value="elem.password"></shower>
-            <td>{{elem['created_at']}}</td>
-            <!-- <td>{{elem['password']}}</td> -->
-
-
-            <!-- <td v-for="head in heads">{{elem[head]}}</td> -->
+            <td v-for="head in heads">{{elem[head]}}</td>
             <td><button @click="mydestroy(elem.id)" class="btn btn-sm btn-danger">Usuń</button></td>
           </tr>
         </tbody>
