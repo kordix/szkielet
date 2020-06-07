@@ -55,8 +55,6 @@
             <textarea style="display:block;width:600px;height:40px;">{{index}}</textarea>
             <p>store</p>
             <textarea style="display:block;width:600px;height:40px;">{{store}}</textarea>
-            <p>show</p>
-            <textarea style="display:block;width:600px;height:40px;">{{show}}</textarea>
             <p>update</p>
             <textarea style="display:block;width:600px;height:40px;">{{update}}</textarea>
             <p><b>Edit.vue</b></p>
@@ -91,6 +89,7 @@
                 route: '',
                 index: '',
                 store: '',
+                delete: '',
                 show: '',
                 update: '',
                 myhtml:'',
@@ -128,6 +127,8 @@
                 generateController() {
                     this.index = `return ${this.modelnazwa}::all();`;
                     this.store = `${this.modelnazwa}::create($request -> all());`
+                    this.update = `${this.modelnazwa}::update($request -> all());`
+                    this.delete = `${this.modelnazwa}::delete();`
                 },
                 generateHTML() {
                     let output = ''

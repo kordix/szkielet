@@ -23,6 +23,34 @@
       </table>
     </div>
     <div v-else>Zapodaj nazwę modelu by użyć komponentu Read</div>
+
+    <div id="edit">
+    <div>
+      <p v-if="mode=='edit'">
+        <b>Edytuj rekord</b>
+      </p>
+      <p v-else>
+        <b>Stwórz nowy rekord</b>
+      </p>
+
+      <div>
+        <!-- <input type="hidden" class="form-control" :value="cruddata.id" name="id"> -->
+
+        <!-- TU WSTAW HTML -->
+        <label>title</label>
+        <input v-model="cruddata.title">
+        <label>description</label>
+        <input v-model="cruddata.description" >
+        <label>category_id</label>
+        <input v-model="cruddata.category_id" >
+
+        <!-- koniec html -->
+        <button type="button" @click="add" v-if="mode=='create'">zapisz</button>
+        <button type="button" @click="update" v-if="mode=='edit'">Zmień</button>
+
+      </div>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -34,7 +62,10 @@ export default {
   data() {
     return {
       dane: [],
-      hidden: ["created_at", "updated_at",'category_id']
+      hidden: ["created_at", "updated_at",'category_id'],
+      mode: "create",
+      editid: null,
+      cruddata: {}
     };
   },
   methods: {
@@ -49,8 +80,24 @@ export default {
         
     },
     edit(id){
-      EventBus.$emit("edit",id)
-
+      this.editid = id;
+      this.mode = "edit";
+      let freshobject = {};
+      freshobject = Object.create(this.dane.find((el)=>el.id == id))
+      this.cruddata = freshobject
+    },
+    update(){
+      let self = this;
+      axios.patch('/'+self.modelname.toLowerCase()+'/'+self.editid,this.cruddata).then((res)=>self.getData())
+    },
+    add() {
+      let self = this;
+      axios
+        .post("/" + this.modelname.toLowerCase(), this.cruddata)
+        .then(res => self.getData());
+    },
+    reset() {
+      this.cruddata = {};
     }
   },
   mounted() {
