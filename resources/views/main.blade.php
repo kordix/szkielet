@@ -10,8 +10,8 @@
 
 </select>
  <div v-if="activetab=='main'">
-    <read :key="'1'" :modelname="'WSTAW'"></read>
-    <edit :key="'2'" :modelname="'WSTAW'"></edit>
+    <read :key="'1'" :modelname="'Todo'"></read>
+    <edit :key="'2'" :modelname="'Todo'"></edit>
  </div>
 
     

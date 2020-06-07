@@ -1932,14 +1932,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["schemat", "modelname"],
+  props: ["modelname"],
   data: function data() {
     return {
       mode: "create",
+      editid: null,
       cruddata: {}
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("edit", function (payload) {
+      console.log("edit");
+      _this.mode = "edit";
+      _this.editid = payload;
+      _this.cruddata = thi;
+    });
   },
   methods: {
     add: function add() {
@@ -2002,6 +2020,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["modelname"],
@@ -2024,6 +2045,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       axios["delete"]('/' + self.modelname.toLowerCase() + '/' + id).then(function (res) {
         return self.getData();
       });
+    },
+    edit: function edit(id) {
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("edit", id);
     }
   },
   mounted: function mounted() {
@@ -37430,9 +37454,87 @@ var render = function() {
         : _c("p", [_c("b", [_vm._v("Stwórz nowy rekord")])]),
       _vm._v(" "),
       _c("div", [
-        _c("button", { attrs: { type: "button" }, on: { click: _vm.add } }, [
-          _vm._v("zapisz")
-        ])
+        _c("label", [_vm._v("title")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.cruddata.title,
+              expression: "cruddata.title"
+            }
+          ],
+          domProps: { value: _vm.cruddata.title },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.cruddata, "title", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", [_vm._v("description")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.cruddata.description,
+              expression: "cruddata.description"
+            }
+          ],
+          domProps: { value: _vm.cruddata.description },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.cruddata, "description", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", [_vm._v("category_id")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.cruddata.category_id,
+              expression: "cruddata.category_id"
+            }
+          ],
+          domProps: { value: _vm.cruddata.category_id },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.cruddata, "category_id", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm.mode == "create"
+          ? _c(
+              "button",
+              { attrs: { type: "button" }, on: { click: _vm.add } },
+              [_vm._v("zapisz")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.mode == "edit"
+          ? _c(
+              "button",
+              { attrs: { type: "button" }, on: { click: _vm.update } },
+              [_vm._v("Zmień")]
+            )
+          : _vm._e()
       ])
     ])
   ])
@@ -37473,7 +37575,9 @@ var render = function() {
                     return _c("td", [_vm._v(_vm._s(elem))])
                   }),
                   _vm._v(" "),
-                  _c("td", [_vm._v("usuń")])
+                  _c("td", [_vm._v("usuń")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("edytuj")])
                 ],
                 2
               )
@@ -37501,6 +37605,21 @@ var render = function() {
                           }
                         },
                         [_vm._v("Usuń")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-sm btn-danger",
+                          on: {
+                            click: function($event) {
+                              return _vm.edit(elem.id)
+                            }
+                          }
+                        },
+                        [_vm._v("Edytuj")]
                       )
                     ])
                   ],

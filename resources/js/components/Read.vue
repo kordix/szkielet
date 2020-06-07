@@ -9,12 +9,15 @@
           <tr>
             <td v-for="elem in heads">{{elem}}</td>
             <td>usuń</td>
+            <td>edytuj</td>
           </tr>
         </thead>
         <tbody>
           <tr v-for="elem in dane">
             <td v-for="head in heads">{{elem[head]}}</td>
             <td><button @click="mydestroy(elem.id)" class="btn btn-sm btn-danger">Usuń</button></td>
+            <td><button @click="edit(elem.id)" class="btn btn-sm btn-danger">Edytuj</button></td>
+
           </tr>
         </tbody>
       </table>
@@ -44,6 +47,10 @@ export default {
         let self = this;
         axios.delete('/'+self.modelname.toLowerCase()+'/'+id).then(res => self.getData())
         
+    },
+    edit(id){
+      EventBus.$emit("edit",id)
+
     }
   },
   mounted() {

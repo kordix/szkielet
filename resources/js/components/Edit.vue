@@ -12,10 +12,17 @@
         <!-- <input type="hidden" class="form-control" :value="cruddata.id" name="id"> -->
 
         <!-- TU WSTAW HTML -->
- 
+        <label>title</label>
+        <input v-model="cruddata.title">
+        <label>description</label>
+        <input v-model="cruddata.description" >
+        <label>category_id</label>
+        <input v-model="cruddata.category_id" >
 
         <!-- koniec html -->
-        <button type="button" @click="add">zapisz</button>
+        <button type="button" @click="add" v-if="mode=='create'">zapisz</button>
+        <button type="button" @click="update" v-if="mode=='edit'">Zmień</button>
+
       </div>
     </div>
   </div>
@@ -25,12 +32,21 @@
 import { EventBus } from "../event-bus.js";
 
 export default {
-  props: ["schemat", "modelname"],
+  props: ["modelname"],
   data() {
     return {
       mode: "create",
+      editid: null,
       cruddata: {}
     };
+  },
+  mounted() {
+    EventBus.$on("edit", payload => {
+      console.log("edit");
+      this.mode = "edit";
+      this.editid = payload;
+      this.cruddata = thi
+    });
   },
   methods: {
     add() {
